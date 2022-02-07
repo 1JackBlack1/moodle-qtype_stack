@@ -1167,9 +1167,10 @@ abstract class stack_input {
      * @param string $fieldname the field name to use in the HTML for this input.
      * @param bool $readonly whether the control should be displayed read-only.
      * @param array $tavalue the value of the teacher's answer for this input.
+     * @param question_attempt $qa the question attempt that is being rendered.
      * @return string HTML for this input.
      */
-    abstract public function render(stack_input_state $state, $fieldname, $readonly, $tavalue);
+    abstract public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, question_attempt $qa);
 
     /*
      * Render any error messages.

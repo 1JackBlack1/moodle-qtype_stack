@@ -53,14 +53,14 @@ class stack_checkbox_input extends stack_dropdown_input {
         return '['.implode(',', $vals).']';
     }
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
         if ($this->errors) {
             return $this->render_error($this->errors);
         }
 
         // Create html.
         $result = '';
-        $values = $this->get_choices();
+        $values = $this->get_formatted_choices($qa);
         $selected = $state->contents;
         $selected = array_flip($state->contents);
         $radiobuttons = array();

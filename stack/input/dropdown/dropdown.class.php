@@ -400,7 +400,26 @@ class stack_dropdown_input extends stack_input {
         return $choices;
     }
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    /**
+     * Returns the array of choices after formatting the choices for display.
+     *
+     * @param question_attempt $qa the question attempt that is being rendered.
+     * @return array|string
+     */
+    protected function get_formatted_choices($qa) {
+
+        $question = $qa->get_question();
+        $choices = $this->get_choices();
+        foreach ($choices as $key => $choice) {
+            $choices[$key] = $question->format_text(
+                $choice,
+                $question->questiontextformat,
+                $qa, 'question', 'questiontext', $question->id);
+        }
+        return $choices;
+    }
+
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
 
         if ($this->errors) {
             return $this->render_error($this->errors);
@@ -408,7 +427,7 @@ class stack_dropdown_input extends stack_input {
 
         // Create html.
         $result = '';
-        $values = $this->get_choices();
+        $values = $this->get_formatted_choices($qa);
         $selected = $state->contents;
 
         $select = 0;

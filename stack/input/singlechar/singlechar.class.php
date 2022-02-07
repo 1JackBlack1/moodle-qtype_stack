@@ -29,7 +29,7 @@ class stack_singlechar_input extends stack_input {
         'allowempty' => false
     );
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
 
         if ($this->errors) {
             return $this->render_error($this->errors);

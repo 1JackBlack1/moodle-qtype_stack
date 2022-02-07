@@ -230,7 +230,7 @@ class stack_matrix_input extends stack_input {
         return array($valid, $errors, $notes, $answer, $caslines);
     }
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
 
         if ($this->errors) {
             return $this->render_error($this->errors);

@@ -32,7 +32,7 @@ class stack_notes_input extends stack_input {
         'manualgraded' => false,
     );
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
         if ($this->errors) {
             return $this->render_error($this->errors);
         }

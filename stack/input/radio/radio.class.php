@@ -32,7 +32,7 @@ class stack_radio_input extends stack_dropdown_input {
      */
     protected $ddldisplay = 'LaTeX';
 
-    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue) {
+    public function render(stack_input_state $state, $fieldname, $readonly, $tavalue, $qa) {
 
         if ($this->errors) {
             return $this->render_error($this->errors);
@@ -40,7 +40,7 @@ class stack_radio_input extends stack_dropdown_input {
 
         // Create html.
         $result = '';
-        $values = $this->get_choices();
+        $values = $this->get_formatted_choices($qa);
         $selected = $state->contents;
 
         $selected = array_flip($state->contents);

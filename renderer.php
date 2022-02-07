@@ -77,7 +77,7 @@ class qtype_stack_renderer extends qtype_renderer {
             $state = $question->get_input_state($name, $response);
 
             $questiontext = str_replace("[[input:{$name}]]",
-                    $input->render($state, $fieldname, $options->readonly, $tavalue),
+                    $input->render($state, $fieldname, $options->readonly, $tavalue, $qa),
                     $questiontext);
 
             $questiontext = $input->replace_validation_tags($state, $fieldname, $questiontext);
